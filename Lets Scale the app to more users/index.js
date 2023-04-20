@@ -16,6 +16,9 @@ submit.addEventListener('submit',(e)=>{
     console.log(data)
     data.push(myobj);
     localStorage.setItem('myobj',JSON.stringify(data));
+    const user= document.getElementById('users');
+
+    user.innerHTML=`${name} "-" ${email}`
     e.target.name.value= "";
     e.target.email.value="";
 
