@@ -2,6 +2,13 @@ const submit = document.querySelector('#my-form');
 let n = document.getElementById('name')
 let Em = document.getElementById('email')
 
+let data = axios.get('https://crudcrud.com/api/c125a6d0b52e4031ba3c4b299fcf1f3a/booking')
+        .then((data => {
+            data = data.data;
+            data.map((obj)=> addUser(obj.name,obj.email))
+        }))
+        .catch((err) => console.log(err))
+
 
 submit.addEventListener('submit', (e) => {
     e.preventDefault();
