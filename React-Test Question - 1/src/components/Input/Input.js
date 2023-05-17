@@ -1,63 +1,66 @@
-import React,{useRef,useState} from "react";
-
-
+import React, { useRef, useState } from "react";
 import "./Input.css";
 
-const Input = ({onAddItems}) => {
+const Input = ({ onAddItems }) => {
+  const [formIsValid, setFormIsValid] = useState(false);
+  const productId = useRef();
+  const sellingPrice = useRef();
+  const productName = useRef();
+  const category = useRef();
 
-   const [formIsValid, setFormaIsValid]= useState(false)
-   const productId=useRef()
-   const sellingPrice=useRef()
-   const productName=useRef()
-   const category=useRef()
-  
-   const formSubmitHandler =(event)=>{
-    event.preventDefault()
-    if (productId.current.value.trim().length !==0 || sellingPrice.current.value.trim().length !==0 ||
-   productName.current.value.trim().length !==0 || category.current.value.trim().length !==0){
-    setFormaIsValid(true)
-   }
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
 
-   onAddItems(productId.current.value,sellingPrice.current.value,productName.current.value,category.current.value)
-   }
+    const enteredProductId = productId.current.value.trim();
+    const enteredSellingPrice = sellingPrice.current.value.trim();
+    const enteredProductName = productName.current.value.trim();
+    const enteredCategory = category.current.value.trim();
+
+    if (
+      enteredProductId !== "" &&
+      enteredSellingPrice !== "" &&
+      enteredProductName !== "" &&
+      enteredCategory !== ""
+    ) {
+      setFormIsValid(true);
+      onAddItems(
+        enteredProductId,
+        enteredSellingPrice,
+        enteredProductName,
+        enteredCategory
+      );
+    } else {
+      setFormIsValid(false);
+    }
+    productId.current.value=''
+    sellingPrice.current.value=''
+    productName.current.value=''
+    category.current.value=''
+
+  };
 
   return (
-    <form  className="form" onSubmit={formSubmitHandler}>
+    <form className="form" onSubmit={formSubmitHandler}>
       <div className="control">
-        <label >Product ID</label>
-        <input
-          ref={productId}
-          type="text"
-          id="amount"
-      
-        />
+        <label>Product ID</label>
+        <input ref={productId} type="text" id="amount" />
       </div>
       <div className="control">
-        <label >Selling Price</label>
+        <label>Selling Price</label>
         <input
-        ref={sellingPrice}
+          ref={sellingPrice}
           type="number"
           id="dish"
-          min='1'
-         
+          min="1"
         />
       </div>
       <div className="control">
-        <label >Product Name</label>
-        <input
-        ref={productName}
-          type="text"
-          id="dish"
-        />
+        <label>Product Name</label>
+        <input ref={productName} type="text" id="dish" />
       </div>
       <div className="control">
-        <label htmlFor="select-expense">
-          Choose a Category
-        </label>
-        <select
-        ref={category}
-          id="Category"
-        >
+        <label htmlFor="select-expense">Choose a Category</label>
+        <select ref={category} id="Category">
           <option value="">--Choose a table--</option>
           <option value="Electronic Items">Electronic Items</option>
           <option value="Food Items">Food Items</option>
@@ -68,6 +71,8 @@ const Input = ({onAddItems}) => {
       <button type="submit" className="button">
         Submit
       </button>
+
+      {!formIsValid && <p>Please fill out all fields.</p>}
     </form>
   );
 };

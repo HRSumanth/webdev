@@ -1,34 +1,60 @@
 import React from "react";
-
-import './list.css'
+import "./list.css";
 import ListItem from "./listItem";
 
-const List =({orders,onDelete})=>{
-
-    
-  return(
-    <section className="list" >
-        <div id="orders" style={{ fontWeight: "bold" }}>
-          <p>Products</p>
-          {orders.map((order, index) => (
-            <div>
-            <ul>
-                <p>Electronic Items</p>
-                {order.category==='Electronic Items' &&<ListItem order={order} onDelete={onDelete}></ListItem>}
-            </ul>
-            <ul>
-                <p>Food Items</p>
-                {order.category==='Food Items' &&<ListItem order={order} onDelete={onDelete}></ListItem>}
-            </ul>
-            <ul> 
-                <p>Skincare Items</p>
-                {order.category==='Skincare Items' &&<ListItem order={order} onDelete={onDelete}></ListItem>}
-            </ul>
-            </div>
-          ))}
+const List = ({ orders, onDelete }) => {
+  return (
+    <section className="list">
+      <div id="orders">
+        <p>Products</p>
+        <div className="list-cat">
+          <p>Electronic Items</p>
+          {orders.map((order) => {
+            if (order.category === "Electronic Items") {
+              return (
+                <div key={order.id}>
+                  <ul>
+                    <ListItem order={order} onDelete={onDelete} />
+                  </ul>
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
-      </section>
-  )
-}
+        <div className="list-cat">
+          <p>Food Items</p>
+          {orders.map((order) => {
+            if (order.category === "Food Items") {
+              return (
+                <div key={order.id}>
+                  <ul>
+                    <ListItem order={order} onDelete={onDelete} />
+                  </ul>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+        <div className="list-cat">
+          <p>Skincare Items</p>
+          {orders.map((order) => {
+            if (order.category === "Skincare Items") {
+              return (
+                <div key={order.id}>
+                  <ul>
+                    <ListItem order={order} onDelete={onDelete} />
+                  </ul>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default List;

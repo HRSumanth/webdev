@@ -7,13 +7,9 @@
     font-weight: bold;
     font-size: 1.5rem;
   }
-  .list ul {
+  .list-cat  {
+    border: 1px solid #ccc;
     list-style: none;
     padding: 1rem;
   }
   
-  .list li {
-    border: 1px solid #ccc;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-  }

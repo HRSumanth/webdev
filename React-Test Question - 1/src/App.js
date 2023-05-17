@@ -5,6 +5,7 @@ import Input from './components/Input/Input';
 import List from './components/list/list';
 
 const useLocalStorage = (key, initialValue) => {
+  
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key);
     return storedValue ? JSON.parse(storedValue) : initialValue;
@@ -28,8 +29,7 @@ const App = () => {
   const handleDeleteOrder = (id) => {
     setOrders((prevOrders) =>
      prevOrders.filter((order) => order.id !== id)
-    );
-    console.log(id)
+    )
   };
 
   return (
