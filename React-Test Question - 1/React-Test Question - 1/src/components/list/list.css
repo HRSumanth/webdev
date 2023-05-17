@@ -1,0 +1,15 @@
+.list {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 40rem;
+  }
+  .list p{
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .list-cat  {
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 1rem;
+  }
+  
