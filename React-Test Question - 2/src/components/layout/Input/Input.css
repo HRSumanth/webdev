@@ -1,0 +1,86 @@
+.input-form { 
+  display: flex;
+  justify-content: space-evenly;
+    max-width: 57rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    margin-top: 6rem;
+    background-color:aliceblue;
+  }
+  
+  .input-control {
+    margin: 1rem 0;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+  }
+  
+  .input-control label,
+  .input-control input {
+    display: block;
+    width: 70%;
+  }
+  
+  .input-control label {
+    font-weight: bold;
+    flex: 1;
+    color: #464646;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-control input {
+    flex: 3;
+    font: inherit;
+    padding: 0.35rem 0.35rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .input-control input:focus {
+    outline: none;
+    border-color: #4f005f;
+    background: #f6dbfc;
+  }
+
+
+  .input-button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #8a2b06;
+    border: 1px solid #8a2b06;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+    height: 3rem;
+  }
+  
+  .button:hover,
+  .button:active {
+    background-color: #641e03;
+    border-color: #641e03;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+  
+  button:disabled,
+  button:focus:disabled,
+  button:hover:disabled,
+  button:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  @media (min-width: 768px) {
+    .control {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+  
